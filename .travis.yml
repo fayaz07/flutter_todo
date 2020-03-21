@@ -7,7 +7,7 @@ jobs:
       env: running unit and widget tests with code coverage
       before_script:
         - sudo apt-get install -y --no-install-recommends lib32stdc++6 libstdc++6 > /dev/null
-        - git clone https://github.com/flutter/flutter.git -b beta
+        - git clone https://github.com/flutter/flutter.git -b stable
         - export PATH="$PATH":"$HOME/.pub-cache/bin"
         - export PATH=`pwd`/flutter/bin:`pwd`/flutter/bin/cache/dart-sdk/bin:$PATH
         - flutter precache
@@ -25,7 +25,7 @@ jobs:
       env: running driver on emulator
       # Run integration tests on android
       before_install:
-        - sudo apt-get install -y --no-install-recommends lib32stdc++6 libstdc++6 > /dev/null
+        - sudo apt-get install -y --no-install-recommends lib32ncurses5 lib32stdc++6 libstdc++6 > /dev/null
         # Install the Android SDK Dependency.
         - export ANDROID_HOME=/opt/android-sdk-linux
         - cd /opt
@@ -43,7 +43,7 @@ jobs:
         - sdkmanager "emulator" "tools" "platform-tools" > /dev/null
         - sdkmanager --list | head -15
         # install older packages (for emulator)
-        - sdkmanager "build-tools;25.0.2" "platforms;android-25" > /dev/null
+        - sdkmanager "build-tools;29.0.2" "platforms;android-29" > /dev/null
         # Create and start emulator.
         - EMULATOR_API_LEVEL=22
         - ANDROID_ABI="default;armeabi-v7a"
