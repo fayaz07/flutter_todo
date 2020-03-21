@@ -1,0 +1,44 @@
+name: integration testing
+
+on: push
+
+jobs:
+  test:
+   
+    runs-on: macos
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-java@v1
+      with:
+        java-version: '12.x'      
+    - uses: subosito/flutter-action@v1
+      with:
+        channel: 'stable'
+    - uses: malinskiy/action-android/install-sdk@release/0.0.5
+    - uses: actions/checkout@v1
+    
+    - run: echo $ANDROID_HOME
+#    - run: sudo apt-get install android-tools-adb
+    - run: cd $ANDROID_HOME && ls
+#    - run: export PATH="$PATH:$ANDROID_HOME/tools"
+#    - run: export PATH="$PATH:$ANDROID_HOME/tools/bin"
+    - run: export PATH="$PATH:$ANDROID_HOME/emulator"   
+    - run: brew install qt5
+    
+    - name: Android Emulator Runner
+      uses: ReactiveCircus/android-emulator-runner@v2.5.0
+      with:
+        api-level: 29
+        arch: x86_64
+        script: emulator -list-avds  
+        #script: ./gradlew connectedCheck
+
+      
+#    - run: avdmanager create avd -n test -k "system-images;android-29;google_apis;x86"  
+    - run: emulator -list-avds
+   # - run: emulator -use-system-libs -avd test
+ 
+    - run: adb devices  
+    - name: "Run Flutter Driver tests"
+      run: "flutter drive --target=test_driver/app.dart"
