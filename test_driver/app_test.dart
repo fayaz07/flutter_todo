@@ -2,13 +2,12 @@ import 'package:flutter_driver/flutter_driver.dart';
 import 'package:test/test.dart';
 
 void main() {
-
   group('Todo integration test', () {
-    final addTodoButton = find.byValueKey('add_todo');
+    final floatingActionButton = find.byValueKey('add_todo');
     final nothingHere = find.byValueKey('no_todos_message');
     final todoList = find.byType('StreamBuilder');
+    final addButton = find.byValueKey('add_todo_to_list_button');
 
-    
     FlutterDriver driver;
 
     // Connect to the Flutter driver before running any tests.
@@ -34,13 +33,11 @@ void main() {
 
     test('adding todo at 0', () async {
       final todoItem = find.byValueKey('item_0_text');
-      await driver.tap(addTodoButton);
+      await driver.tap(floatingActionButton,
+          timeout: Duration(milliseconds: 800));
 
-      final addButton = find.byValueKey('add_todo_to_list_button');
-
-      // final textField = find.byValueKey('TF');
-      await driver.enterText("Go corona",timeout: Duration(milliseconds: 100));
-      await driver.tap(addButton);
+      await driver.enterText("Go corona", timeout: Duration(seconds: 3));
+      await driver.tap(addButton, timeout: Duration(seconds: 2));
       await driver.scrollUntilVisible(todoList, todoItem);
 
       expect(
@@ -51,12 +48,11 @@ void main() {
 
     test('adding todo at 1', () async {
       final todoItem = find.byValueKey('item_1_text');
-      await driver.tap(addTodoButton);
+      await driver.tap(floatingActionButton,
+          timeout: Duration(milliseconds: 800));
 
-      final addButton = find.byValueKey('add_todo_to_list_button');
-
-      await driver.enterText("corona go",timeout: Duration(milliseconds: 100));
-      await driver.tap(addButton);
+      await driver.enterText("corona go", timeout: Duration(seconds: 3));
+      await driver.tap(addButton, timeout: Duration(seconds: 2));
       await driver.scrollUntilVisible(todoList, todoItem);
 
       expect(
@@ -67,5 +63,5 @@ void main() {
       await driver.close();
       print('Integration tests succeeded');
     });
-  });
+  }, timeout: Timeout(Duration(minutes: 4)));
 }
