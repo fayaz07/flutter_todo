@@ -8,11 +8,13 @@ void main() {
     final nothingHere = find.byValueKey('no_todos_message');
     final todoList = find.byType('StreamBuilder');
 
+    
     FlutterDriver driver;
 
     // Connect to the Flutter driver before running any tests.
     setUpAll(() async {
       driver = await FlutterDriver.connect();
+      await driver.setTextEntryEmulation(enabled: true);
     });
 
     test('check flutter driver health', () async {
@@ -61,6 +63,9 @@ void main() {
         await driver.getText(todoItem),
         'corona go',
       );
+
+      await driver.close();
+      print('Integration tests succeeded');
     });
   });
 }
