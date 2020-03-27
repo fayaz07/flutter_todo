@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter_driver/flutter_driver.dart';
 import 'package:test/test.dart';
 
@@ -48,11 +50,12 @@ void main() {
 
     test('adding todo at 1', () async {
       final todoItem = find.byValueKey('item_1_text');
-      await driver.tap(floatingActionButton,
-          timeout: Duration(milliseconds: 800));
-
-      await driver.enterText("corona go", timeout: Duration(seconds: 3));
-      await driver.tap(addButton, timeout: Duration(seconds: 2));
+      await driver.tap(floatingActionButton);
+      sleep(Duration(seconds: 2));
+      await driver.enterText("corona go");
+      sleep(Duration(seconds: 2));
+      await driver.tap(addButton);
+      sleep(Duration(seconds: 2));
       await driver.scrollUntilVisible(todoList, todoItem);
 
       expect(

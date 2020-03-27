@@ -1,4 +1,4 @@
-name: Run unit & widget tests & build apk
+name: Run analyze, unit, widget tests & build apk
 
 on: push
 
@@ -17,5 +17,6 @@ jobs:
         channel: 'stable'
         
     - run: flutter pub get
+    - run: flutter analyze
     - run: flutter test
     - run: flutter build apk  
