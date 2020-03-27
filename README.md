@@ -7,7 +7,7 @@ A new Flutter application.
 To run the integration tests
 
 1. Clone the app
-2. Run ``` flutter packages get ```
+2. Run ``` flutter pub get ```
 3. Run the following command in terminal
 
 ```bash
