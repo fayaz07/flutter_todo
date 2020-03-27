@@ -1,33 +1,45 @@
-import 'package:flutter_test/flutter_test.dart';
 import 'package:fluttertodo/main.dart';
 import 'package:fluttertodo/unit_todo.dart';
+import 'package:test/test.dart';
 
 void main() {
-  group('Todo unit test group', (){
-    final todoEr = TodoUnit();
+  group('Todo unit test group', () {
+    final todoInstance = TodoUnit();
     Todo todo = Todo(task: 'Go corona', finished: false);
 
-    test('Todo unit test', () {
+    test('check 0 on instantiation', () {
 
-      expect(todoEr.checkList.length, 0);
+      expect(todoInstance.checkList.length, 0);
 
     });
+    
+    test('add one item by text', (){
+      todoInstance.addTodo('Go Corona1');
+      expect(todoInstance.checkList.length, 1);
+    });
 
-    todoEr.addTodo('Go Corona1');
-    expect(todoEr.checkList.length, 1);
+    test('add one item by instance', (){
+      todoInstance.addTodoItem(todo);
+      expect(todoInstance.checkList.length, 2);
+    });
 
-    todoEr.addTodoT(todo);
-    expect(todoEr.checkList.length, 2);
+    test('add one more item by instance', (){
+      todoInstance.addTodoItem(todo);
+      expect(todoInstance.checkList.length, 3);
+    });
 
-    todoEr.addTodoT(todo);
-    expect(todoEr.checkList.length, 3);
+    test('remove item at specific index', (){
+      todoInstance.removeTodo(1);
+      expect(todoInstance.checkList.length, 2);
+    });
 
-    todoEr.removeTodo(1);
-    expect(todoEr.checkList.length, 2);
+    test('remove item at invalid index', (){
+      todoInstance.removeTodo(3);
+      expect(todoInstance.checkList.length, 2);
+    });
 
-    todoEr.close();
-
-    todoEr.removeTodo(3);
-    expect(todoEr.checkList.length, 2);
+    test('close instance', (){
+      todoInstance.close();
+    });
   });
 }

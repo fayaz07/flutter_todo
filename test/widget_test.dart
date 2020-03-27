@@ -4,7 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:fluttertodo/main.dart';
 
 void main() {
-  testWidgets('Todo app test', (WidgetTester tester) async {
+  testWidgets('Todo app widget test', (WidgetTester tester) async {
     await tester.pumpWidget(MyApp());
 
     expect(find.byType(MaterialApp), findsOneWidget,

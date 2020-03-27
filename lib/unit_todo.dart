@@ -17,7 +17,7 @@ class TodoUnit {
     _updateStream();
   }
 
-  addTodoT(Todo todo) {
+  addTodoItem(Todo todo) {
     checkList.add(todo);
     _updateStream();
   }

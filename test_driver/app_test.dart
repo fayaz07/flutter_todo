@@ -2,6 +2,7 @@ import 'package:flutter_driver/flutter_driver.dart';
 import 'package:test/test.dart';
 
 void main() {
+
   group('Todo integration test', () {
     final addTodoButton = find.byValueKey('add_todo');
     final nothingHere = find.byValueKey('no_todos_message');
@@ -12,6 +13,11 @@ void main() {
     // Connect to the Flutter driver before running any tests.
     setUpAll(() async {
       driver = await FlutterDriver.connect();
+    });
+
+    test('check flutter driver health', () async {
+      Health health = await driver.checkHealth();
+      print(health.status);
     });
 
     tearDownAll(() async {
@@ -30,7 +36,7 @@ void main() {
 
       final addButton = find.byValueKey('add_todo_to_list_button');
 
-      final textField = find.byValueKey('TF');
+      // final textField = find.byValueKey('TF');
       await driver.enterText("Go corona",timeout: Duration(milliseconds: 100));
       await driver.tap(addButton);
       await driver.scrollUntilVisible(todoList, todoItem);
