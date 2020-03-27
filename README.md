@@ -16,7 +16,7 @@ A flutter todo sample application demonstrating Flutter testing(Unit, Widget and
 flutter test
 ```
 
-Log result of Unit, Widget tests
+##### Log result of Unit, Widget tests
 ---
 ```bash
 fayaz@hp:~/StudioProjects/flutter_todo$ flutter test
@@ -30,7 +30,7 @@ fayaz@hp:~/StudioProjects/flutter_todo$ flutter test
 flutter drive --target=test_driver/app.dart
 ```
 
-Log result of integration tests
+##### Log result of integration tests
 ---
 ```bash
 fayaz@hp:~/StudioProjects/flutter_todo$ flutter drive --target=test_driver/app.dart
