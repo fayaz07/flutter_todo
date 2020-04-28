@@ -9,6 +9,7 @@ void main() {
     final nothingHere = find.byValueKey('no_todos_message');
     final todoList = find.byType('StreamBuilder');
     final addButton = find.byValueKey('add_todo_to_list_button');
+    final textField = find.byValueKey('TF');
 
     FlutterDriver driver;
 
@@ -38,6 +39,8 @@ void main() {
       await driver.tap(floatingActionButton,
           timeout: Duration(milliseconds: 800));
 
+      await driver.tap(textField);
+
       await driver.enterText("Go corona", timeout: Duration(seconds: 3));
       await driver.tap(addButton, timeout: Duration(seconds: 2));
       await driver.scrollUntilVisible(todoList, todoItem);
@@ -52,6 +55,7 @@ void main() {
       final todoItem = find.byValueKey('item_1_text');
       await driver.tap(floatingActionButton);
       sleep(Duration(seconds: 2));
+      await driver.tap(textField);
       await driver.enterText("corona go");
       sleep(Duration(seconds: 2));
       await driver.tap(addButton);

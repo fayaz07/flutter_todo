@@ -1,6 +1,11 @@
-# fluttertodo
+<img src="https://miro.medium.com/max/937/1*PJd9d8vWMUv5notXiYSwJw.png"/>
+Source: Internet
+
+# flutter-todo
 
 A flutter todo sample application demonstrating Flutter testing(Unit, Widget and Integration tests)
+
+
 
 ## Getting Started
 
@@ -10,7 +15,7 @@ A flutter todo sample application demonstrating Flutter testing(Unit, Widget and
 2. Run ``` flutter pub get ```
 3. Run the following commands in terminal
 
-#### Widget and Unit tests
+#### Run Widget and Unit tests
 
 ```bash
 flutter test
@@ -24,7 +29,7 @@ fayaz@hp:~/StudioProjects/flutter_todo$ flutter test
 ```
 
 
-#### Integration tests
+#### Run Integration tests
 
 ```bash
 flutter drive --target=test_driver/app.dart
