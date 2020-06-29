@@ -1,7 +1,9 @@
 <img src="https://miro.medium.com/max/937/1*PJd9d8vWMUv5notXiYSwJw.png"/>
 Image source: Internet
 
-[![Codemagic build status](https://api.codemagic.io/apps/5e7dc146c986422a4de60e73/5e7dc146c986422a4de60e72/status_badge.svg)](https://codemagic.io/apps/5e7dc146c986422a4de60e73/5e7dc146c986422a4de60e72/latest_build)
+[![Codemagic build status](https://api.codemagic.io/apps/5e7dc146c986422a4de60e73/5e7dc146c986422a4de60e72/status_badge.svg)](https://codemagic.io/apps/5e7dc146c986422a4de60e73/5e7dc146c986422a4de60e72/latest_build) [![codecov](https://codecov.io/gh/fayaz07/flutter_todo/branch/master/graph/badge.svg)](https://codecov.io/gh/fayaz07/flutter_todo)
+
+
 
 # flutter-todo
 
